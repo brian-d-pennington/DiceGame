@@ -10,6 +10,14 @@ let gameCounter = 0;
 let gameTotalThusFar;
 let gameScoreCard = [];
 
+function finalScore() { // gameScoreCard should look something like [Brian: 23 ,Brian: 45 ,Brian: 56]
+    let splitGameScoreCard = gameScoreCard.split(""); // hopefully ["Brian:" "23" ",Brian:" "45" ",Brian:" "56"]
+    let splitCardArray = [];
+    if (splitGameScoreCard[i] / 2 !== 0 || splitGameScoreCard[i] == 1) {
+        splitCardArray.push(splitGameScoreCard);
+    }
+}
+
 
 function toProceed() { 
     if (gameCounter != 0) { //if they play they will have a count other than zero.
@@ -102,7 +110,7 @@ function briansLousyDiceGame(playerName) {
             if (gameTotalThusFar % 2 === 1) {
                 prompt("Uh oh, that's an odd score. However, you still have a chance! Choose a card between 1 and 3. You have a 66% chance of picking the DEATH CARD, which will end your streak. Soooo.. pick a card: 1, 2, or 3.");
                 let meaninglessCardPick = Math.random(); // yes, the "card pick" is completely pointless
-                    if (meaninglessCardPick >= .33 && meaninglessCardPick <= 1) { 
+                    if (meaninglessCardPick >= .34 && meaninglessCardPick <= 1) { 
                         alert("Oh snap, you got the DEATH CARD. Game over.");
                         // final score function
                     }
