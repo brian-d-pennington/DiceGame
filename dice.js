@@ -1,24 +1,23 @@
-
-    
-// the object of the game is to get as high of score possible, but the final score MUST be even.
-// player gets 10 rolls total: 5 determined by a pre determined 6 sided die, the last 5 rolls given a choice of 4, 6, 8, 10, 13, 19 sided dice
-// if even, the final score gets tallied, and if a new record the user gets to store initials.
-
 let playerName = prompt("Before beginning, please enter your name");
 let startingScore = 0; 
 let gameCounter = 0;
 let gameTotalThusFar;
-let gameScoreCard = [];
+let gameScoreCard = "Brian: 23 ,Brian: 45 ,Brian: 56"; // content for testing
+
 
 function finalScore() { // gameScoreCard should look something like [Brian: 23 ,Brian: 45 ,Brian: 56]
-    let splitGameScoreCard = gameScoreCard.split(""); // hopefully ["Brian:" "23" ",Brian:" "45" ",Brian:" "56"]
-    let splitCardArray = [];
-    if (splitGameScoreCard[i] / 2 !== 0 || splitGameScoreCard[i] == 1) {
-        splitCardArray.push(splitGameScoreCard);
-    }
-}
+    let gameScoreCardSplit = gameScoreCard.split(" "); // ["Brian:", "23", ",Brian", "45", ",Brian", "56"]
+    let cardValues = [];
+    for (i = 0; i <= gameScoreCardSplit.length; i++) {
+        if (gameScoreCardSplit[i] % 2 === 1 || gameScoreCardSplit[i] === 1) {
+            cardValues.push(gameScoreCardSplit[i]);
+        }
+    }   console.log(cardValues);
+}   
 
+console.log(finalScore());
 
+/*
 function toProceed() { 
     if (gameCounter != 0) { //if they play they will have a count other than zero.
         let doYouWantToPlayAgain = prompt("You know the drill.. do you wanna play again? Y/N");
@@ -108,9 +107,9 @@ function briansLousyDiceGame(playerName) {
             gameScoreCard.push(scoreCard); 
 
             if (gameTotalThusFar % 2 === 1) {
-                prompt("Uh oh, that's an odd score. However, you still have a chance! Choose a card between 1 and 3. You have a 66% chance of picking the DEATH CARD, which will end your streak. Soooo.. pick a card: 1, 2, or 3.");
+                prompt("Uh oh, that's an odd score. However, you still have a chance! Choose a card between 1 and 3. You have a 33% chance of picking the DEATH CARD, which will end your game streak. Soooo.. pick a card: 1, 2, or 3.");
                 let meaninglessCardPick = Math.random(); // yes, the "card pick" is completely pointless
-                    if (meaninglessCardPick >= .34 && meaninglessCardPick <= 1) { 
+                    if (meaninglessCardPick >= .66 && meaninglessCardPick <= 1) { 
                         alert("Oh snap, you got the DEATH CARD. Game over.");
                         // final score function
                     }
@@ -128,7 +127,8 @@ function briansLousyDiceGame(playerName) {
                     alert("Here are your accumulated scores: " + gameScoreCard);
                 }
                 console.log(toProceed());
-            }
+            }   
+        console.log(finalScore()); //for testing, move later
 
     }   
 
@@ -157,3 +157,4 @@ function sixSidedDiceRoll()  { //primitive, first attempt die solution. I left i
     }
     return dice;
 }
+*/
