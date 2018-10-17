@@ -2,28 +2,32 @@ let playerName = prompt("Before beginning, please enter your name");
 let startingScore = 0; 
 let gameCounter = 0;
 let gameTotalThusFar;
-let gameScoreCard = "Brian: 23 ,Brian: 45 ,Brian: 56"; // content for testing
+let gameScoreCard = [];
+let finalScoreCount;
+let reducer = (accumulator, currentValue) => accumulator + currentValue; // used in multiple parts of game to sum arrays
 
-
-function finalScore() { // gameScoreCard should look something like [Brian: 23 ,Brian: 45 ,Brian: 56]
-    let gameScoreCardSplit = gameScoreCard.split(" "); // ["Brian:", "23", ",Brian", "45", ",Brian", "56"]
+function finalScore() { 
+    let gameScoreCardAsString = gameScoreCard.toString();
+    let gameScoreCardSplit = gameScoreCardAsString.split(" "); 
     let cardValues = [];
     for (i = 0; i <= gameScoreCardSplit.length; i++) {
-        if (gameScoreCardSplit[i] % 2 === 1 || gameScoreCardSplit[i] === 1) {
+        if (gameScoreCardSplit[i] % 2 === 1 || gameScoreCardSplit[i] % 2 === 0) { // basically it needs to filter out any number
             cardValues.push(gameScoreCardSplit[i]);
         }
-    }   console.log(cardValues);
+    }
+    let cardValuesToNumbers = cardValues.map(Number);
+    finalScoreCount = cardValuesToNumbers.reduce(reducer);
+    alert(playerName + ", your final score is " + finalScoreCount + ".");
+    alert("Game over. Reload the browser if you want to play again for some reason..");
+    
 }   
 
-console.log(finalScore());
-
-/*
 function toProceed() { 
     if (gameCounter != 0) { //if they play they will have a count other than zero.
         let doYouWantToPlayAgain = prompt("You know the drill.. do you wanna play again? Y/N");
         if (doYouWantToPlayAgain == "N" || doYouWantToPlayAgain == "n") {
             alert("Yeah I don't blame ya...");
-            // final score function
+            console.log(finalScore());
         }
         else {
             alert("Ok you sadist.. (press OK)");
@@ -93,7 +97,6 @@ function briansLousyDiceGame(playerName) {
             let computerDiceRoll = Math.floor(Math.random() * numberOfSides) + 1;
             rollTallied.push(computerDiceRoll);
 
-            let reducer = (accumulator, currentValue) => accumulator + currentValue;
             let arrayTotal = rollTallied.reduce(reducer);
             gameTotalThusFar = arrayTotal + diceSum;
             alert("Your total for this spin was " + computerDiceRoll + ", giving you a total of " + gameTotalThusFar + "!");
@@ -101,7 +104,7 @@ function briansLousyDiceGame(playerName) {
         } // for loop, 5 player turns
             
             
-        }   console.log(multiDiceCodeSolution(diceSum));
+    }       console.log(multiDiceCodeSolution(diceSum));
             
             let scoreCard = playerName + ": " + gameTotalThusFar + ". ";
             gameScoreCard.push(scoreCard); 
@@ -111,7 +114,7 @@ function briansLousyDiceGame(playerName) {
                 let meaninglessCardPick = Math.random(); // yes, the "card pick" is completely pointless
                     if (meaninglessCardPick >= .66 && meaninglessCardPick <= 1) { 
                         alert("Oh snap, you got the DEATH CARD. Game over.");
-                        // final score function
+                        console.log(finalScore());
                     }
                     else {
                         alert("Phew, you were saved by the LIFE CARD!");
@@ -128,9 +131,9 @@ function briansLousyDiceGame(playerName) {
                 }
                 console.log(toProceed());
             }   
-        console.log(finalScore()); //for testing, move later
-
-    }   
+        
+        
+    }   //closes briansLousyDiceGame()
 
 
 
@@ -152,9 +155,8 @@ function sixSidedDiceRoll()  { //primitive, first attempt die solution. I left i
     else if (dice <= .84) {
         dice = 5;   
     }
-    else if (dice <= 1) {
+    else {
         dice = 6;   
-    }
+    } 
     return dice;
 }
-*/
