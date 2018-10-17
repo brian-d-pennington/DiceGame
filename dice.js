@@ -11,7 +11,7 @@ function finalScore() {
     let gameScoreCardSplit = gameScoreCardAsString.split(" "); 
     let cardValues = [];
     for (i = 0; i <= gameScoreCardSplit.length; i++) {
-        if (gameScoreCardSplit[i] % 2 === 1 || gameScoreCardSplit[i] % 2 === 0) { // basically it needs to filter out any number
+        if (gameScoreCardSplit[i] % 2 === 1 || gameScoreCardSplit[i] % 2 === 0) { // wonky solution to filtering out all numbers
             cardValues.push(gameScoreCardSplit[i]);
         }
     }
@@ -75,24 +75,25 @@ function briansLousyDiceGame(playerName) {
     
         for (playerTurns = 1; playerTurns <= 5; playerTurns++) {
             let playerChoice = prompt("For your next roll, would you like to use a 4, 6, 8, 11, 13, or 19 sided die?");
-            if (playerChoice == "4") {
-                numberOfSides = 4;
-            }
-            else if (playerChoice == "6") {
-                numberOfSides = 6;
-            }
-            else if (playerChoice == "8") {
-                numberOfSides = 8;
-            } 
-            else if (playerChoice == "11") {
-                numberOfSides = 11;
-            }
-            else if (playerChoice == "13") {
-                numberOfSides = 13;
-            }
-            else {
-                numberOfSides = 19;
-            }
+            
+                    if (playerChoice == "4") {
+                        numberOfSides = 4;
+                    }
+                    else if (playerChoice == "6") {
+                        numberOfSides = 6;
+                    }
+                    else if (playerChoice == "8") {
+                        numberOfSides = 8;
+                    } 
+                    else if (playerChoice == "11") {
+                        numberOfSides = 11;
+                    }
+                    else if (playerChoice == "13") {
+                        numberOfSides = 13;
+                    }
+                    else {
+                        numberOfSides = 19;
+                    }
         
             let computerDiceRoll = Math.floor(Math.random() * numberOfSides) + 1;
             rollTallied.push(computerDiceRoll);
